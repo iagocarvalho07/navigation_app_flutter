@@ -9,7 +9,10 @@ class MealsItem extends StatelessWidget {
   final Meal meal;
 
   void _selecteMeals(BuildContext context) {
-    Navigator.of(context).pushNamed(AppRputes.MEAL_DETAIL, arguments: meal);
+    Navigator.of(context).pushNamed(
+      AppRputes.MEAL_DETAIL,
+      arguments: meal,
+    );
   }
 
   @override
