@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:navigation_app_flutter/screens/categorys_meals_screen.dart';
+import 'package:navigation_app_flutter/utils/app_routes.dart';
 
 import '../models/categorys.dart';
 
@@ -10,15 +10,17 @@ class CategoryItem extends StatelessWidget {
   final Category category;
 
   void _selectCategory(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) {
-          return CategorysMealsScreen(
-            category: category,
-          );
-        },
-      ),
-    );
+    // Navigator.of(context).push(
+    //   MaterialPageRoute(
+    //     builder: (_) {
+    //       return CategorysMealsScreen(
+    //         category: category,
+    //       );
+    //     },
+    //   ),
+    // );
+    Navigator.of(context)
+        .pushNamed(AppRputes.CATEGORIES_MEALS, arguments: category);
   }
 
   @override
@@ -30,11 +32,14 @@ class CategoryItem extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            gradient: LinearGradient(colors: [
+          borderRadius: BorderRadius.circular(15),
+          gradient: LinearGradient(
+            colors: [
               category.color.withOpacity(0.5),
               category.color,
-            ])),
+            ],
+          ),
+        ),
         child: Text(
           category.title,
           style: Theme.of(context).textTheme.titleMedium,
