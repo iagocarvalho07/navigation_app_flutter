@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:navigation_app_flutter/models/meal.dart';
+import 'package:navigation_app_flutter/utils/app_routes.dart';
 
 class MealDetailsScreen extends StatelessWidget {
-  const MealDetailsScreen({super.key});
+  const MealDetailsScreen({super.key, required this.onToggleFavorite});
+
+  final Function(Meal) onToggleFavorite;
+
 
   Widget _creatSectionTitle(BuildContext context, String title) {
     return Container(
@@ -84,7 +88,8 @@ class MealDetailsScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.star),
         onPressed: () {
-          Navigator.of(context).pop(meal);
+          onToggleFavorite(meal);
+          Navigator.pushNamed(context, AppRputes.HOME);
         },
       ),
     );
